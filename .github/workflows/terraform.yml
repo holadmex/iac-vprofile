@@ -5,27 +5,27 @@ on:
       - main
       - stage
     paths:
-      -terraform/**
+      - terraform/**
   pull_request:
     branches:
       - main
     paths:
-      - -terraform/**
+      - terraform/**
 
 env:
-# Credentials for deployment to aws
-AWS_ACCESS_KEY_ID: ${{ secret.AWS_ACCESS_KEY_ID }}      
-AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_SECRET_ACCESS_KEY }}
-# S3 bucket for terraform state
-BUCKET_TF_STATE: ${{ secret.BUCKET_TF_STATE }}
-AWS_REGION: us-east-1
-ESK_CLUSTER: gitops-eks
+  # Credentials for deployment to aws
+  AWS_ACCESS_KEY_ID: ${{ secret.AWS_ACCESS_KEY_ID }}      
+  AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_SECRET_ACCESS_KEY }}
+  # S3 bucket for terraform state
+  BUCKET_TF_STATE: ${{ secret.BUCKET_TF_STATE }}
+  AWS_REGION: us-east-1
+  ESK_CLUSTER: gitops-eks
 
 jobs:
   terraform:
     name: "Apply terraform code changes"
     runs-on: ubuntu-latest
-    default:
+    defaults:
       run:
         shell: bash
         working-directory: ./terraform
