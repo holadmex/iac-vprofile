@@ -72,10 +72,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           aws-region: ${{ env.AWS_REGION }} 
 
-      - name: Get kube config file
-        id: getconfig
-        if: steps.apple.outcome == 'success'
-        run: aws eks update-kubeconfig --name${{ env.EKS_CLUSTER }} --region ${{ env.AWS_REGION }}
 
       - name: Install Ingress controller
         if: steps.apple.outcome == 'success' && steps.getconfig.outcome == 'success'
