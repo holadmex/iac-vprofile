@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "clusterName" {
-  description = "Name of the EKS cluster"
+  description = "EKS_CLUSTER"
   type        = string
   default     = "gitops-eks"
 }
